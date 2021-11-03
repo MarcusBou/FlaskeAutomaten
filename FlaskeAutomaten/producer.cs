@@ -11,7 +11,7 @@ namespace FlaskeAutomaten
         private string[] names = new string[] { "Soda", "Beer" };
         Random rand = new Random();
 
-        public Bottle GetBottle()
+        public Bottle GetBottle()//chooses randomly between the two and returns bottle
         {
             int typeChooser = rand.Next(0, names.Length);
             return new Bottle(names[typeChooser]);

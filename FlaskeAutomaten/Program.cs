@@ -6,7 +6,7 @@ namespace FlaskeAutomaten
     {
         static void Main(string[] args)
         {
-            flaskeAutomatManager fam = new flaskeAutomatManager();
+            flaskeAutomatManager fam = new flaskeAutomatManager();//Calls Fam and run threads
             fam.Threads();
         }
     }

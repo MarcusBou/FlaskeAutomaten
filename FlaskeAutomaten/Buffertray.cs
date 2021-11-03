@@ -37,7 +37,6 @@ namespace FlaskeAutomaten
             {
                 if (bottleTray[i] == null)
                 {
-     
                     if ((i + 1) != bottleTray.Length)
                     {
                         bottleTray[i] = bottleTray[i + 1];

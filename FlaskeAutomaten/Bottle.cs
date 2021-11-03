@@ -10,7 +10,7 @@ namespace FlaskeAutomaten
     {
         private string name;
         public string Name {  get {  return name; }  }
-        public Bottle(string nam)
+        public Bottle(string nam)//Bottle with name
         {
             name = nam;
         }

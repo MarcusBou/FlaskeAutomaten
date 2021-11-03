@@ -8,16 +8,22 @@ namespace FlaskeAutomaten
 {
     class flaskeAutomatManager
     {
-        private static int bottleTraySize = 10;
+        //variabler
+        private static int bottleTraySize = 10;//for all tray sizes
 
+        //Buffers
         private static Buffertray mainTray = new Buffertray(bottleTraySize);
         private static Buffertray sodaTray = new Buffertray(bottleTraySize);
         private static Buffertray beerTray = new Buffertray(bottleTraySize);
 
+        //Objects
         producer producer = new producer();
         Consumer beerConsum = new Consumer("Beer Collector", "Beer", beerTray);
         Consumer sodaConsum = new Consumer("Soda Collector", "Soda", sodaTray);
 
+        /// <summary>
+        /// Prepares threads for use
+        /// </summary>
         public void Threads()
         {
             Thread p1 = new Thread(production);
@@ -36,6 +42,9 @@ namespace FlaskeAutomaten
             c2.Start(sodaConsum);
         }
 
+        /// <summary>
+        /// runs production method while last value in bottletray is empty
+        /// </summary>
         public void production()
         {
             while (true)
@@ -47,6 +56,9 @@ namespace FlaskeAutomaten
             }
         }
 
+        /// <summary>
+        /// Splitter splits between the 2 different types and then sleeps after
+        /// </summary>
         public void takeToSplitter()
         {
             while (true)
@@ -57,7 +69,7 @@ namespace FlaskeAutomaten
                     {
                         Console.WriteLine($"[Sorter] sends to {beerConsum.Name}");
                         beerTray.Enqueue(mainTray.Dequeue());
-                        Thread.Sleep(500);
+                        Thread.Sleep(200);
                     }
                     else if (mainTray.BottleTray[0].Name == sodaConsum.Type)
                     {
@@ -69,6 +81,7 @@ namespace FlaskeAutomaten
             }
         }
 
+        //Consumemers gets from tray
         public void ConsumeFromTray(object cons)
         {
             Consumer consumer = (Consumer)cons;
